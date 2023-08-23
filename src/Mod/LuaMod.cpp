@@ -1894,7 +1894,8 @@ Overloads:
                             if (!lua.is_string()) { throw std::runtime_error{"Couldn't find '__absolute_path' for directory entry."}; }
                             const auto current_path = std::string{lua.get_string()};
                             auto files_table = lua.prepare_new_table();
-                            for (int i = 1; const auto& item : std::filesystem::directory_iterator(current_path))
+                            int i = 1;
+                            for ( const auto& item : std::filesystem::directory_iterator(current_path))
                             {
                                 if (!item.is_directory())
                                 {
